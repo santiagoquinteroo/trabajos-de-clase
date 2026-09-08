@@ -53,7 +53,7 @@ public class Main {
         int num1=0;
         int num2=0;
 
-        for (int i=0; i<A.length;i++){
+        for (int i=0; i<A.length && repetido==false;i++){
             num1=A[i];
             for (int j=i+1;j<A.length;j++){
                 num2=A[j];
@@ -61,9 +61,7 @@ public class Main {
                     return true;
                 }
             }
-            if (repetido){
-                break;
-            }
+
         }
 
         return repetido;
