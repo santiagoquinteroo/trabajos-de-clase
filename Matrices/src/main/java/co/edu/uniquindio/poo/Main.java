@@ -9,12 +9,13 @@ public class Main {
                          {5,6,7,8},
                          {9,10,11,12},
                         {13,14,15,16}};
+        int n=Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese la cantidad de columnas y filas que quiere que tenga su matriz ()"));
         String matrixVisual=imprimirMatriz(Matrix);
-        JOptionPane.showMessageDialog(null,matrixVisual);
+        JOptionPane.showMessageDialog(null,"La matriz es: "+"\n"+matrixVisual);
         int suma=sumarMatriz(Matrix);
-        JOptionPane.showMessageDialog(null,suma);
+        JOptionPane.showMessageDialog(null,"La suma de la matriz es: "+suma);
         int sumaDiagonal=sumarDiagonalDeMatriz(Matrix);
-        JOptionPane.showMessageDialog(null,sumaDiagonal);
+        JOptionPane.showMessageDialog(null,"La suma de la diagonal de la matriz es: "+sumaDiagonal);
 
     }
     public static String imprimirMatriz(int Matrix[][]){
@@ -54,8 +55,45 @@ public class Main {
         }
         return sumaDiagonal;
     }
-    public static void MatrizEspiral(){
-        //Me doy 😔
+    public static int[][] MatrizEspiral(int n){
+
+            int[][] matriz = new int[n][n];
+
+            int numero = 1;
+
+            int arriba = 0;
+            int abajo = n - 1;
+            int izquierda = 0;
+            int derecha = n - 1;
+
+            while (arriba <= abajo && izquierda <= derecha) {
+                for (int columna = izquierda; columna <= derecha; columna++) {
+                    matriz[arriba][columna] = numero;
+                    numero++;
+                }
+                arriba++;
+
+                for (int fila = arriba; fila <= abajo; fila++) {
+                    matriz[fila][derecha] = numero;
+                    numero++;
+                }
+                derecha--;
+
+                for (int columna = derecha; columna >= izquierda; columna--) {
+                    matriz[abajo][columna] = numero;
+                    numero++;
+                }
+                abajo--;
+
+                for (int fila = abajo; fila >= arriba; fila--) {
+                    matriz[fila][izquierda] = numero;
+                    numero++;
+                }
+                izquierda++;
+            }
+
+            return matriz;
+        }
 
     }
-}
+
