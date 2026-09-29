@@ -8,4 +8,5 @@ public class Estudiante {
     String correo;
     String telefono;
     Nota[] notas = new Nota[5];
+
 }
