@@ -19,8 +19,6 @@ public class Curso {
 
     }
 
-    //Set y get
-
     public void setNombre(String nombre){
         this.nombre = nombre;
     }
@@ -50,6 +48,7 @@ public class Curso {
                 ", listaEstudiantes=" + listaEstudiantes +
                 '}';
     }
+
     public String registrarEstudiante(String nombre, String apellidos, String identificación, byte edad,
                                       String correo, String telefono, Curso ownedByCurso, Nota[] listaNotas){
         String msg="";
@@ -62,29 +61,26 @@ public class Curso {
                                                         listaEstudiantes.add(estudianteNuevo);
             msg+="Estudiante registrado con exito";
         }
-
-
-
-
         return msg;
-
     }
+
     public Estudiante buscarEstudiante(String identificacion){
         for(Estudiante aux : listaEstudiantes){
 
             if(aux.getIdentificación().equals(identificacion)){
                 return aux;
             }
-
         }
         return null;
     }
+
     public boolean eliminarEstudiante(String identificacion) {
         Estudiante estudianteEncontrado = buscarEstudiante(identificacion);
         if(estudianteEncontrado != null){
             listaEstudiantes.remove(estudianteEncontrado);
             return true;
-        }else return false;
+        }
+        return false;
     }
 
     public boolean actualizarEstudiante(String identificacionAntigua, String identificacionNueva,
@@ -111,4 +107,94 @@ public class Curso {
             return "El estudiante no esta registrado";
         }
     }
+
+    public boolean verificarEstudianteNotaD5(){
+        for (Estudiante aux : listaEstudiantes){
+            if (aux.calcularNotaDefinitiva()==5){
+                return true;
+            }
+
+        }
+        return false;
+    }
+
+    public boolean verSiHayDosMariana(){
+        for (Estudiante aux : listaEstudiantes){
+            if (aux.getNombre().equalsIgnoreCase("Mariana")){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public double calcularNotaMayor(){
+        double mayor=0;
+
+        for (Estudiante aux : listaEstudiantes) {
+            for (Nota notaAux : aux.getListaNotas()){
+                if (notaAux!=null && notaAux.getValor()>mayor){
+                    mayor=notaAux.getValor();
+                }
+            }
+        }
+        return mayor;
+    }
+
+    public double calcularNotaMenor(){
+        double menor=5;
+
+        for (Estudiante aux : listaEstudiantes){
+            for (Nota notaAux : aux.getListaNotas()){
+                if (notaAux!=null && notaAux.getValor()<menor){
+                    menor=notaAux.getValor();
+                }
+            }
+        }
+        return menor;
+    }
+
+    public double promedioGrupal(){
+        double suma=0;
+        int cantidad=0;
+
+        for (Estudiante aux:listaEstudiantes){
+            for (Nota notaAux : aux.getListaNotas()){
+                if (notaAux!=null){
+                    suma+=notaAux.getValor();
+                    cantidad++;
+                }
+            }
+        }
+        if (cantidad==0){
+            return 0;
+        }
+        return suma/cantidad;
+    }
+    
+    public void ordenarEstudiantesPorNombre(){
+        for (int i = 0; i < listaEstudiantes.size() ; i++) {
+            for (int j = 0; j < listaEstudiantes.size() ; j++) {
+                Estudiante actual=listaEstudiantes.get(j);
+                Estudiante siguiente=listaEstudiantes.get(j+1);
+
+                if (actual.getNombre().compareToIgnoreCase(siguiente.getNombre())>0){
+                    listaEstudiantes.set(j, siguiente);
+                    listaEstudiantes.set(j+1, actual);
+                }
+            }
+        }
+    }
+
+    public String estudianteConSyPromedioSuperiorA(){
+        String msg="";
+
+        for (Estudiante aux:listaEstudiantes){
+            if (aux.getNombre()!=null && aux.getNombre().charAt(0)=='S' && aux.calcularNotaDefinitiva()>3.5){
+                msg+=aux.getNombre()+" "+aux.getApellidos()+"\n"+"Con promedio: "+aux.calcularNotaDefinitiva()+"\n";
+            }
+        }
+        return msg;
+    }
 }
+
+

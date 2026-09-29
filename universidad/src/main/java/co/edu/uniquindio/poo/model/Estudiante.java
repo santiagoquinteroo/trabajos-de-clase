@@ -141,5 +141,22 @@ public class Estudiante {
         return null;
     }
 
+    public double calcularNotaDefinitiva(){
+        double suma=0;
+        int cantidad=0;
 
+        for (Nota aux : listaNotas){
+            if (aux!=null){
+                suma+= aux.getValor();
+                cantidad++;
+            }
+        }
+
+        if (cantidad==0){
+            return 0.00;
+
+        }
+        return suma/cantidad;
+
+    }
 }
