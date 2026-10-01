@@ -13,6 +13,8 @@ public class Tienda {
     private Map<String, Producto> listaProductos = new HashMap<>();
 
 
+
+
     public Tienda(String nombre, String nit, String telefono) {
         this.nombre = nombre;
         this.nit = nit;

@@ -13,13 +13,15 @@ public class Cliente {
     private final String correo;
 
     private List<Factura>listaFacturas;
+    private final Tienda ownedByTienda;
 
-    public Cliente(String documento, String nombreCompleto, String telefono, String ciudadResidencia, String correo, List<Factura> listaFacturas) {
+    public Cliente(String documento, String nombreCompleto, String telefono, String ciudadResidencia, String correo, List<Factura> listaFacturas, Tienda ownedByTienda) {
         this.documento = documento;
         this.nombreCompleto = nombreCompleto;
         this.telefono = telefono;
         this.ciudadResidencia = ciudadResidencia;
         this.correo = correo;
+        this.ownedByTienda = ownedByTienda;
         this.listaFacturas = new ArrayList<>();
     }
 
