@@ -1,0 +1,53 @@
+package co.edu.uniquindio.poo.model;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class Cliente {
+
+    private final String documento;
+    private final String nombreCompleto;
+    private final String telefono;
+    private final String ciudadResidencia;
+    private final String correo;
+
+    private List<Factura>listaFacturas;
+
+    public Cliente(String documento, String nombreCompleto, String telefono, String ciudadResidencia, String correo, List<Factura> listaFacturas) {
+        this.documento = documento;
+        this.nombreCompleto = nombreCompleto;
+        this.telefono = telefono;
+        this.ciudadResidencia = ciudadResidencia;
+        this.correo = correo;
+        this.listaFacturas = new ArrayList<>();
+    }
+
+    public String getDocumento() {
+        return documento;
+    }
+
+    public String getNombreCompleto() {
+        return nombreCompleto;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public String getCiudadResidencia() {
+        return ciudadResidencia;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public List<Factura> getListaFacturas() {
+        return Collections.unmodifiableList(listaFacturas);
+    }
+
+    public void setListaFacturas(List<Factura> listaFacturas) {
+        this.listaFacturas = listaFacturas;
+    }
+}
