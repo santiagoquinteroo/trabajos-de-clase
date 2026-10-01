@@ -46,7 +46,7 @@ public class Cliente {
     }
 
     public List<Factura> getListaFacturas() {
-        return Collections.unmodifiableList(listaFacturas);
+        return Collections.unmodifiableList(listaFacturas); //Para que nada pueda modificar la factura del cliente desde afuera
     }
 
     public void setListaFacturas(List<Factura> listaFacturas) {

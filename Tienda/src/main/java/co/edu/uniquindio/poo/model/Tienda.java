@@ -37,5 +37,25 @@ public class Tienda {
         this.telefono = telefono;
     }
 
+    public String registrarCliente(Cliente cliente){
+
+        Cliente encontrado= buscarCliente(cliente.getDocumento());
+        if (encontrado==null){
+            listaClientes.add(cliente);
+            return "El cliente fue registrado existosamente";
+        }else return "Ya existe un cliente con esa información";
+
+
+
+    }
+   public Cliente buscarCliente(String documento){
+       for (Cliente aux : listaClientes){
+           if (aux.getDocumento().equalsIgnoreCase(documento)){
+            return aux;
+           }
+       }
+       return null;
+
+   }
 
 }
