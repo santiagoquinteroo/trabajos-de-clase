@@ -23,29 +23,42 @@ public class Tienda {
 
 
     public String getNit() {
+
         return nit;
     }
 
     public String getNombre() {
+
         return nombre;
     }
     public String getTelefono() {
+
         return telefono;
     }
 
     public void setTelefono(String telefono) {
+
         this.telefono = telefono;
     }
 
-    public String registrarCliente(Cliente cliente){
+    public String registrarCliente(String documento, String nombreCompleto, String telefono, String ciudadResidencia, String correo){
 
         Cliente encontrado= buscarCliente(cliente.getDocumento());
         if (encontrado==null){
-            listaClientes.add(cliente);
+            Cliente nuevoCliente = new Cliente(documento, nombreCompleto, telefono, ciudadResidencia, correo);
+            listaClientes.add(nuevoCliente);
             return "El cliente fue registrado existosamente";
         }else return "Ya existe un cliente con esa información";
 
 
+
+    }
+    public String eliminarCliente(Cliente cliente){
+        Cliente encontrado = buscarCliente(cliente.getDocumento());
+        if (encontrado!=null){
+            listaClientes.remove(cliente);
+            return "Cliente eliminado con exito";
+        }else return "El cliente no existe";
 
     }
    public Cliente buscarCliente(String documento){
