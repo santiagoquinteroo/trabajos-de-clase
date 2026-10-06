@@ -100,6 +100,33 @@ public class Tienda {
         return Optional.empty();
     }
 
+    public String registrarFactura (Factura factura) {
+        Optional<Factura> facturaEncontrada = buscarFactura(factura.codigo());
+        if (facturaEncontrada == null) {
+            listaFacturas.add(factura);
+            return "Factura registrada con exito";
+        } else return "Factura ya existente";
+
+    }
+    public String eliminarFactura (Factura factura) {
+        Optional<Factura> facturaEncontrada = buscarFactura(factura.codigo());
+        if (facturaEncontrada != null) {
+            listaFacturas.remove(factura);
+            return "Factura eliminada con exito";
+        } else return "Factura no existente";
+
+    }
+
+
+    public Optional <Factura> buscarFactura (String codigo){
+        for (Factura aux : listaFacturas){
+            if (aux.codigo().equalsIgnoreCase(codigo)){
+                return Optional.of(aux);
+            }
+        }
+        return Optional.empty();
+    }
+
 
 
 }
