@@ -1,8 +1,6 @@
 package co.edu.uniquindio.poo.model;
 
-import java.lang.classfile.Opcode;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -14,7 +12,7 @@ public record Factura(String codigo, LocalDate Fecha, double Total, EstadoFactur
     //Los records son clases inmutables osea que los atributos después de asignados no se pueden modificar
     public String registrarDetalleFactura(DetalleFactura detalleFactura){
         Optional <DetalleFactura> detalleEncontrado = buscarDetalleFactura(String.valueOf(detalleFactura.getProducto()));
-        if (detalleEncontrado==null){
+        if (detalleEncontrado.isEmpty()){
             listaDetallesFactura.add(detalleFactura);
             return "Detalle registrado con exito";
         }else return "Ya existe un detalle con esta info";
