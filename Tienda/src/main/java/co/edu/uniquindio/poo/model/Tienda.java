@@ -1,5 +1,6 @@
 package co.edu.uniquindio.poo.model;
 
+import java.time.LocalDate;
 import java.util.*;
 
 public class Tienda {
@@ -41,34 +42,71 @@ public class Tienda {
         this.telefono = telefono;
     }
 
-    public String registrarCliente(String documento, String nombreCompleto, String telefono, String ciudadResidencia, String correo){
+    public String registrarCliente(Cliente cliente){
 
-        Cliente encontrado= buscarCliente(cliente.getDocumento());
+        Optional <Cliente> encontrado= buscarCliente(cliente.getDocumento());
         if (encontrado==null){
-            Cliente nuevoCliente = new Cliente(documento, nombreCompleto, telefono, ciudadResidencia, correo);
-            listaClientes.add(nuevoCliente);
+            listaClientes.add(cliente);
             return "El cliente fue registrado existosamente";
         }else return "Ya existe un cliente con esa información";
 
 
 
     }
+
     public String eliminarCliente(Cliente cliente){
-        Cliente encontrado = buscarCliente(cliente.getDocumento());
+        Optional <Cliente> encontrado = buscarCliente(cliente.getDocumento());
         if (encontrado!=null){
             listaClientes.remove(cliente);
             return "Cliente eliminado con exito";
         }else return "El cliente no existe";
 
     }
-   public Cliente buscarCliente(String documento){
+
+   public Optional <Cliente> buscarCliente(String documento){
        for (Cliente aux : listaClientes){
            if (aux.getDocumento().equalsIgnoreCase(documento)){
-            return aux;
+            return Optional.of(aux);
            }
        }
-       return null;
+       return Optional.empty();
 
    }
 
+   public String registrarProducto(Producto producto){
+
+        Optional <Producto> productoEncontrado = buscarProducto(producto.getCodigo());
+        if (productoEncontrado.isEmpty()){
+
+            listaProductos.put(producto.getCodigo(), producto);
+            return "Producto registrado existosamente";
+        }else return "Ya existe un producto con esos datos";
+
+
+    }
+    public String eliminarProducto(Producto producto){
+        Optional <Producto> productoEncontrado = buscarProducto(producto.getCodigo());
+        if (productoEncontrado!=null){
+            listaProductos.remove(producto.getCodigo(), producto);
+            return  "Producto eliminado con exito";
+        }else  return "No existe producto con esa información";
+
+    }
+
+    public Optional <Producto> buscarProducto(String codigo){
+        if (listaProductos.containsKey(codigo)){
+            return Optional.of(listaProductos.get(codigo));
+        }
+        return Optional.empty();
+    }
+
+
+
 }
+
+
+
+
+
+
+

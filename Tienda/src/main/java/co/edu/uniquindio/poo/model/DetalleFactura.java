@@ -21,7 +21,7 @@ public class DetalleFactura {
         return subtotal;
     }
 
-    public Producto getProducto() {
+    public String getProducto() {
         return producto;
     }
 
