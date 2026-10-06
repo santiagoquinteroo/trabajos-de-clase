@@ -13,7 +13,7 @@ public record Factura(String codigo, LocalDate Fecha, double Total, EstadoFactur
 
     //Los records son clases inmutables osea que los atributos después de asignados no se pueden modificar
     public String registrarDetalleFactura(DetalleFactura detalleFactura){
-        Optional <DetalleFactura> detalleEncontrado = buscarDetalleFactura(detalleFactura.getProducto());
+        Optional <DetalleFactura> detalleEncontrado = buscarDetalleFactura(String.valueOf(detalleFactura.getProducto()));
         if (detalleEncontrado==null){
             listaDetallesFactura.add(detalleFactura);
             return "Detalle registrado con exito";
@@ -21,7 +21,7 @@ public record Factura(String codigo, LocalDate Fecha, double Total, EstadoFactur
 
     }
     public String eliminarDetalleFactura(DetalleFactura detalleFactura){
-        Optional <DetalleFactura> detalleEncontrado = buscarDetalleFactura(detalleFactura.getProducto());
+        Optional <DetalleFactura> detalleEncontrado = buscarDetalleFactura(String.valueOf(detalleFactura.getProducto()));
         if (detalleEncontrado!=null){
             listaDetallesFactura.remove(detalleFactura);
             return "Detalle eliminado con exito";
