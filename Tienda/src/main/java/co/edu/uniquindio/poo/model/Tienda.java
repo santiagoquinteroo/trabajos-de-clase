@@ -131,9 +131,19 @@ public class Tienda {
     //Imperativa y declarativa
 
     public Optional <Cliente> buscarCliente1(String documento){
-        Stream<Cliente> stream = listaClientes.stream().filter(cliente -> documento.equalsIgnoreCase(cliente.getDocumento()));
+        Stream <Cliente> stream = listaClientes.stream().filter(cliente ->
+                                    documento.equalsIgnoreCase(cliente.getDocumento())).findFirst().stream();
+
+        return Optional.of((Cliente) stream);
+    }
+
+    public Optional<Factura>buscarFactura1(String codigo){
+        Stream<Factura>stream= listaFacturas.stream().filter(factura ->
+                                codigo.equalsIgnoreCase(factura.codigo())).findFirst().stream();
 
     }
+
+    // Calcular el valor total de la factura 
 
 
 
