@@ -143,7 +143,7 @@ public class Tienda {
 
     }
 
-    // Calcular el valor total de la factura 
+    // Calcular el valor total de la factura
 
 
 
