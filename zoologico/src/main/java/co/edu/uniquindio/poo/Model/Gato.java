@@ -2,9 +2,11 @@ package co.edu.uniquindio.poo.Model;
 
 public class Gato extends   Animal {
 
+    private boolean vacunado;
+
     public Gato(String nombre, String codigo, String color, byte edad, boolean vacunado){
         super(nombre,codigo,color,edad);
-
+        this.vacunado = vacunado;
 
     }
 
@@ -15,7 +17,7 @@ public class Gato extends   Animal {
 
     @Override
     public void dormir() {
-        super.dormir();
+        System.out.println("El gato está durmiendo");
     }
 
     @Override

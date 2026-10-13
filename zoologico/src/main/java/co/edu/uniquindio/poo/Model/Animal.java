@@ -8,6 +8,8 @@ public abstract class Animal {
     private final String color;
     private byte edad;
 
+    private Zoologico ownedByZoologico;
+
     public Animal(String nombre, String codigo, String color, byte edad) {
         this.nombre = nombre;
         this.codigo = codigo;
@@ -44,9 +46,7 @@ public abstract class Animal {
 
     public abstract void comer();
 
-    public void dormir(){
-        System.out.println("El animal está durmiendo");
-    }
+    public abstract void dormir();
     public abstract void  hacerSonido();
 
 
