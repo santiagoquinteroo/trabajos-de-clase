@@ -86,8 +86,11 @@ public abstract class Empleado {
 
     public abstract float calcularSalarioBruto();
 
-    public double calcularSalarioNeto(){
-        return (calcularSalarioBruto()-(calcularSalarioBruto()*calcularDescuento()));
+    public float calcularSalarioNeto(){
+        float salarioNeto = (float) (calcularSalarioBruto()-(calcularSalarioBruto()*calcularDescuento()));
+        if (salarioNeto>0) {
+            return salarioNeto;
+        }else return 0;
     }
 
     public void mostrarInformacion(){

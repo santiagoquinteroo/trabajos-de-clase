@@ -56,8 +56,11 @@ public class EmpleadoPlanta extends Empleado{
 
     @Override
     public float calcularSalarioBruto() {
-        return (float) (calcularSalarioBruto() + ((calcularSalarioBruto()*calcularBonificacion())+(calcularSalarioBruto()+
-                        (horasExtra*valorHorasExtra))-(auxilioTransporte)));
+        float salarioBruto = (float) (getSalarioBase() + ((getSalarioBase()*calcularBonificacion())+(getSalarioBase()+
+                (horasExtra*valorHorasExtra))-(auxilioTransporte)));
+        if (salarioBruto>=0) {
+            return salarioBruto;
+        }else return 0;
     }
 
     @Override
