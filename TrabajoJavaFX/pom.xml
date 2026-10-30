@@ -78,9 +78,9 @@
                             <mainClass>
                                 co.edu.uniquindio.poo.trabajojavafx/co.edu.uniquindio.poo.trabajojavafx.HelloApplication
                             </mainClass>
-                            <launcher>app</launcher>
-                            <jlinkZipName>app</jlinkZipName>
-                            <jlinkImageName>app</jlinkImageName>
+                            <launcher>co.edu.uniquindio.poo.trabajojavafx.app</launcher>
+                            <jlinkZipName>co.edu.uniquindio.poo.trabajojavafx.app</jlinkZipName>
+                            <jlinkImageName>co.edu.uniquindio.poo.trabajojavafx.app</jlinkImageName>
                             <noManPages>true</noManPages>
                             <stripDebug>true</stripDebug>
                             <noHeaderFiles>true</noHeaderFiles>
