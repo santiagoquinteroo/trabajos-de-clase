@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" prefHeight="320.0" prefWidth="440.0" spacing="16.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.trabajojavafx.viewController.MenuController">
+    <children>
+        <Label styleClass="title" text="Biblioteca UQ" />
+        <Label styleClass="subtitle" text="Sistema de gestión de libros" />
+        <Label fx:id="lblResumen" styleClass="estado-info" text="Libros registrados: 0" />
+        <Button fx:id="btnAbrirCatalogo" defaultButton="true" mnemonicParsing="false" prefWidth="220.0" styleClass="btn-primario" text="Abrir catálogo de libros" >
+            <onAction>#onAbrirCatalogo</onAction>
+        </Button>
+        <Button fx:id="btnSalir" mnemonicParsing="false" prefWidth="220.0" text="Salir" >
+            <onAction>#onSalir</onAction>
+        </Button>
+    </children>
+    <padding>
+        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+    </padding>
+</VBox>

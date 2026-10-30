@@ -53,10 +53,10 @@ public class Biblioteca {
 
     public boolean actualizarLibro(String isbn, Libro actualizado) {
         Optional<Libro> existente = buscarLibro(isbn);
-        Libro existenteLibro = existente.get();
-        if (existente != null || actualizado != null) {
+        if (existente.isEmpty() || actualizado == null) {
             return false;
         }
+        Libro existenteLibro = existente.get();
         boolean cambiaIsbn = !isbn.equals(actualizado.getIsbn());
         if (cambiaIsbn&& verificarLibro(actualizado.getIsbn())) {
             return false;
