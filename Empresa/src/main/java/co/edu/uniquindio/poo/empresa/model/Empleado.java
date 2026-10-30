@@ -1,5 +1,7 @@
 package co.edu.uniquindio.poo.empresa.model;
 
+import java.util.Objects;
+
 public class Empleado {
     private String user;
     private String password;
@@ -53,5 +55,28 @@ public class Empleado {
 
     public void setIdenficicacion(String idenficicacion) {
         this.idenficicacion = idenficicacion;
+    }
+
+    @Override
+    public String toString() {
+        return "Empleado{" +
+                "user='" + user + '\'' +
+                ", password='" + password + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", idenficicacion='" + idenficicacion + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Empleado empleado = (Empleado) o;
+        return Objects.equals(user, empleado.user) && Objects.equals(password, empleado.password) && Objects.equals(nombre, empleado.nombre) && Objects.equals(apellido, empleado.apellido) && Objects.equals(idenficicacion, empleado.idenficicacion);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(user, password, nombre, apellido, idenficicacion);
     }
 }

@@ -6,5 +6,5 @@ module co.edu.uniquindio.poo.empresa {
     requires com.dlsc.formsfx;
 
     opens co.edu.uniquindio.poo.empresa to javafx.fxml;
-    exports co.edu.uniquindio.poo.empresa;
+    exports co.edu.uniquindio.poo.empresa.model;
 }
