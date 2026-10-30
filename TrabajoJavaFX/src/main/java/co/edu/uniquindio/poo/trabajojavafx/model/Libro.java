@@ -1,5 +1,7 @@
 package co.edu.uniquindio.poo.trabajojavafx.model;
 
+import java.util.Optional;
+
 public class Libro {
     private String titulo;
     private String autor;
@@ -64,4 +66,6 @@ public class Libro {
     public void setDisponible(boolean disponible) {
         this.disponible = disponible;
     }
+
+
 }
